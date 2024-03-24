@@ -4,6 +4,10 @@ Chegg Skills WeLoveMovies 2024
 
 CHANGE LOG
 
+- 3/24/2024
+    - Migrations COMPLETE--dropped all tables then used migrate:up command in specific order with foreign id tables last.
+    - Created folders and files for movies, theaters, reviews
+
 - 3/20/2024 
     - Database successfully connected via connection.js and knex.js
     - Migrations created for all 5 tables
