@@ -1,22 +1,22 @@
-const generateMoviesTheatersJoins = (movieIds, theaterIds) => {
-  return movieIds
-    .map(({ movie_id: movieId }) => {
-      return theaterIds.map(({ theater_id: theaterId }) => {
-        return {
-          is_showing: true,
-          theater_id: theaterId,
-          movie_id: movieId,
-        };
-      });
-    })
-    .reduce((a, b) => a.concat(b), [])
-    .filter((reviews) => reviews.theater_id);
-};
+const { movies, theaters } = require('../data');
 
-exports.seed = async function (knex) {
-  const movieIds = await knex("movies").select("movie_id");
-  const theaterIds = await knex("theaters").select("theater_id");
-
-  const joins = generateMoviesTheatersJoins(movieIds, theaterIds);
-  return knex("movies_theaters").insert(joins);
+exports.seed = function(knex) {
+  // Deletes ALL existing entries
+  return knex
+    .raw('TRUNCATE TABLE movies_theaters RESTART IDENTITY CASCADE')
+    .then(function () {
+      // Inserts seed entries
+      return knex('movies_theaters').insert(
+        theaters.reduce((acc, theater) => {
+          const movieId = movies.find((movie) => {
+            return movie.title === theater.movie_title;
+          }).movie_id;
+          acc.push({
+            movie_id: movieId,
+            theater_id: theater.theater_id,
+          });
+          return acc;
+        }, [])
+      );
+    });
 };
