@@ -1,6 +1,6 @@
-const moviesService = require('./movies.service');
-const asyncErrorBoundary = require('../errors/asyncErrorBoundary');
-const { as } = require('../db/connection');
+const moviesService = require("./movies.service");
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+
 
 function read(req, res) {
   const { movie: data } = res.locals;
@@ -21,9 +21,11 @@ async function movieExists(req, res, next) {
 }
 
 async function list(req, res) {
-  const isShowing = req.query.is_showing === 'true';
-  const data = await moviesService.list(isShowing);
-  res.json({ data });
+  if (req.query.is_showing) {
+    res.send({ data: await moviesService.inTheatersNow() });
+  } else {
+    res.send({ data: await moviesService.list() });
+  }
 }
 
 async function listTheaters(req, res) {

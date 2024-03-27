@@ -4,6 +4,11 @@ Chegg Skills WeLoveMovies 2024
 
 CHANGE LOG
 
+- 3/27
+    - Revised tables (syntax error)--migrated all tables and seeded data successfully
+    - Added logic to app.js--will need to uncomment routes for reviews and theaters otherwise error will prevent tests from running.
+    - Movies tests PASS--No further editing required for movies directory 
+
 - 3/26 
     - Export functions for seeds files--revisit movies_theaters to determine if modifications are necessary with reduce.
     - All error files and functions added

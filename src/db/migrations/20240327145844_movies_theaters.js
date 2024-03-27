@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-    return knex.schema.createTable("movie_theaters", (table) => {
+    return knex.schema.createTable("movies_theaters", (table) => {
       table.integer("movie_id").unsigned().notNullable();
       table
         .foreign("movie_id")
@@ -16,6 +16,6 @@ exports.up = function (knex) {
     });
   };
 
-exports.down = function(knex) {
-  
-};
+  exports.down = function(knex) {
+    return knex.schema.dropTable("movies_theaters");
+  };
