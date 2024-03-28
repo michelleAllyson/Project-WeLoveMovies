@@ -4,6 +4,9 @@ Chegg Skills WeLoveMovies 2024
 
 CHANGE LOG
 
+- 3/28
+    - Revised reviews controller and service files--all tests passing related to reviews routes. 
+
 - 3/27
     - Revised tables (syntax error)--migrated all tables and seeded data successfully
     - Added logic to app.js--will need to uncomment routes for reviews and theaters otherwise error will prevent tests from running.
