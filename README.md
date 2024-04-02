@@ -4,6 +4,9 @@ Chegg Skills WeLoveMovies 2024
 
 CHANGE LOG
 
+- 4/2
+    - All tests passing
+
 - 3/28
     - Revised reviews controller and service files--all tests passing related to reviews routes. 
 

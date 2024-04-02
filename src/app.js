@@ -18,9 +18,7 @@ app.use(cors());
 
 app.use("/movies", moviesRouter);
 app.use("/reviews", reviewsRouter);
-
-//ADD STATEMENTS BELOW ONCE ROUTERS ARE ADDED
-// app.use("/theaters", theatersRouter);
+app.use("/theaters", theatersRouter);
 
 app.use(notFound);
 app.use(errorHandler);
